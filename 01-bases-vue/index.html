@@ -9,7 +9,13 @@
 <body>
 
   <div id="myApp">
-    <h1>Batman quotes</h1>
+    <h1>Batman quotes <small>{{ newQuote }}</small></h1>
+    <input
+      type="text"
+      v-model="newQuote"
+      v-on:keypress="addQuote"
+      >
+    <hr>
 
     <ul>
       <li v-for="({quote, author}, index) in quotes">
