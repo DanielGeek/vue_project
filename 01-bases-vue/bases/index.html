@@ -9,12 +9,12 @@
 <body>
 
   <div id="myApp">
-    <h1>Batman quotes</h1>
+    <h3> {{ quote }}</h3>
+    <blockquote> -{{ author }} </blockquote>
 
-    <ul>
-      <li v-for="quote in quotes">Author</li>
-    </ul>
-
+    <button v-on:click="changeQuote">
+      Change quote
+    </button>
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>
