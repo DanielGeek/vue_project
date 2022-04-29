@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ customTitle }}</h2>
+  <h2>{{ customTitle }} {{ start }}</h2>
   <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
 
   <div>
@@ -11,11 +11,18 @@
 
 <script>
 export default {
-  props: ['title'],
+  props: {
+    title: String,
+    start: {
+      type: Number,
+      default: 100
+      // required: true
+    }
+  },
   // name: 'Patito feliz'
   data() {
     return {
-      counter: 5
+      counter: this.start
     }
   },
   methods: {
