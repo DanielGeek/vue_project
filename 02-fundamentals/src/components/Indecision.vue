@@ -9,7 +9,7 @@
       placeholder="Ask me a question">
     <p>Remember to end with a question mark (?)</p>
 
-    <div>
+    <div v-if="isValidQuestion">
       <h2>{{ question }}</h2>
       <h1>{{ answer }}</h1>
     </div>
@@ -22,7 +22,8 @@ export default {
       return {
         question: null,
         answer: null,
-        img: null
+        img: null,
+        isValidQuestion: false
       }
     },
     methods: {
@@ -36,7 +37,12 @@ export default {
     },
     watch: {
       question( value, oldValue ) {
+
+        this.isValidQuestion = false
+
         if( !value.includes('?') ) return
+
+        this.isValidQuestion = true
 
         this.getAnswer()
       }
