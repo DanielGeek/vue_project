@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Counter from '@/components/Counter'
 
 describe('Counter Component', () => {
@@ -19,5 +19,15 @@ describe('Counter Component', () => {
     const h2Value = wrapper.find('h2').text()
 
     expect( h2Value ).toBe('Counter')
+  })
+
+  test('value by default should have 100 in p', () => {
+    const wrapper = shallowMount( Counter );
+
+    // const pTags = wrapper.findAll('p')
+    const value = wrapper.find('[data-testid="counter"]').text()
+
+    // expect( pTags[1].text() ).toBe('100')
+    expect( value ).toBe('100')
   })
 })
