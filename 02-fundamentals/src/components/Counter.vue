@@ -1,6 +1,6 @@
 <template>
-  <h2>{{ customTitle }} {{ start }}</h2>
-  <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
+  <h2>{{ customTitle }}</h2>
+  <p> {{ counter }} <sup>2</sup> = {{ squareCounter }}</p>
 
   <div class="buttons-container">
     <button @click="increase">+1</button>
