@@ -2,7 +2,7 @@
   <h2>{{ customTitle }} {{ start }}</h2>
   <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
 
-  <div>
+  <div class="buttons-container">
     <button @click="increase">+1</button>
     <button @click="decrease">-1</button>
   </div>
