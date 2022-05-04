@@ -3,6 +3,12 @@ import Counter from '@/components/Counter'
 
 describe('Counter Component', () => {
 
+  let wrapper
+
+  beforeEach(() => {
+    wrapper = shallowMount( Counter )
+  })
+
   // test('It must match the snapshot', () => {
 
   //   const wrapper = shallowMount( Counter )
@@ -12,8 +18,6 @@ describe('Counter Component', () => {
 
   test('h2 should have the default value counter', () => {
 
-    const wrapper = shallowMount( Counter );
-
     expect( wrapper.find('h2').exists() ).toBeTruthy()
 
     const h2Value = wrapper.find('h2').text()
@@ -21,8 +25,7 @@ describe('Counter Component', () => {
     expect( h2Value ).toBe('Counter')
   })
 
-  test('value by default should have 100 in p', () => {
-    const wrapper = shallowMount( Counter );
+  test('value by default should have 100 in p',() => {
 
     // const pTags = wrapper.findAll('p')
     const value = wrapper.find('[data-testid="counter"]').text()
@@ -33,16 +36,11 @@ describe('Counter Component', () => {
 
   test('should be increment and decrease the counter value', async() => {
 
-    const wrapper = shallowMount( Counter );
-
-    const increaseBtn = wrapper.find('button')
+    const [increaseBtn, decreaseBtn] = wrapper.findAll('button')
 
     await increaseBtn.trigger('click')
     await increaseBtn.trigger('click')
     await increaseBtn.trigger('click')
-
-    const decreaseBtn = wrapper.findAll('button')[1]
-
     await decreaseBtn.trigger('click')
     await decreaseBtn.trigger('click')
 
