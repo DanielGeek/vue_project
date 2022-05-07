@@ -4,16 +4,24 @@ import Indecision from '@/components/Indecision.vue'
 describe('Indecision component', () => {
 
   let wrapper;
+  let clgSpy
 
   beforeEach( () => {
     wrapper = shallowMount( Indecision )
+
+    clgSpy = jest.spyOn( console, 'log' )
   })
 
   test('must match the snapshot', () => {
     expect( wrapper.html() ).toMatchSnapshot()
   })
 
-  test('Writing to input should not trigger anything (console.log)', () => {
+  test('Writing to input should not trigger anything (console.log)', async() => {
+
+    const input = wrapper.find('input')
+    await input.setValue('Hello World')
+
+    expect( clgSpy ).toHaveBeenCalledTimes(1)
 
   })
 
