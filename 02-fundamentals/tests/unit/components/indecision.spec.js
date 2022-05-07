@@ -18,10 +18,13 @@ describe('Indecision component', () => {
 
   test('Writing to input should not trigger anything (console.log)', async() => {
 
+    const getAndswerSpy = jest.spyOn( wrapper.vm, 'getAnswer')
+
     const input = wrapper.find('input')
     await input.setValue('Hello World')
 
     expect( clgSpy ).toHaveBeenCalledTimes(1)
+    expect( getAndswerSpy ).not.toHaveBeenCalled()
 
   })
 
