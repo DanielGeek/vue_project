@@ -3,13 +3,18 @@ import Indecision from '@/components/Indecision.vue'
 
 describe('Indecision component', () => {
 
-  let wrapper;
+  let wrapper
   let clgSpy
+
+  global.fetch = jest.fn()
 
   beforeEach( () => {
     wrapper = shallowMount( Indecision )
 
     clgSpy = jest.spyOn( console, 'log' )
+
+    jest.clearAllMocks()
+
   })
 
   test('must match the snapshot', () => {
@@ -28,8 +33,15 @@ describe('Indecision component', () => {
 
   })
 
-  test('write the symbol of "?" must trigger the fetch', () => {
+  test('write the symbol of "?" must trigger the getAnswer', async() => {
 
+    const getAndswerSpy = jest.spyOn( wrapper.vm, 'getAnswer')
+
+    const input = wrapper.find('input')
+    await input.setValue('Hello World?')
+
+    expect( clgSpy ).toHaveBeenCalledTimes(3)
+    expect( getAndswerSpy ).toHaveBeenCalled()
   })
 
   test('tests in getAnswer failed in the api', () => {
